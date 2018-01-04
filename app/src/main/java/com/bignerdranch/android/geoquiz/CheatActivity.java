@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class CheatActivity extends AppCompatActivity {
 
   private TextView answerTextView;
   private Button showAnswerButton;
+  private TextView apiTextView;
 
   public static Intent newIntent(Context packageContext, boolean answerIsTrue) {
     Intent intent = new Intent(packageContext, CheatActivity.class);
@@ -82,6 +84,9 @@ public class CheatActivity extends AppCompatActivity {
         }
       }
     });
+
+    apiTextView = (TextView) findViewById(R.id.apiTextView);
+    apiTextView.setText("API Level " + Build.VERSION.SDK_INT);
 
     if (isAnswerShown) {
       showAnswerButton.setVisibility(View.INVISIBLE);
